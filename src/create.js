@@ -1,0 +1,7 @@
+import { todo } from "./class";
+
+//parse object from DOM array and create todo object and push to storage array
+
+export function todoCreate(array, title, description, dueDate, priority, notes, project) {
+    
+}
