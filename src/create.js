@@ -1,4 +1,4 @@
-import { todo } from "./class";
+import { todo } from "./toDoClass";
 
 //parse object from DOM array and create todo object and push to storage array
 
