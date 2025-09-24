@@ -1,4 +1,6 @@
 import { renderTitle } from "./renderTitle";
+import './style.css';
+ 
 
 const sidebar = document.querySelectorAll('.sidebar>div');
 
@@ -21,8 +23,12 @@ sidebar.forEach((item) => {
                 // render title for tab
                 if (item.id === "projects") {
                     console.log(renderTitle)
-                    renderTitle.renderProjectTitle()
+                    renderTitle.renderProjectsTitle()
                 }
+                else if (item.id === "addproject") {
+                    renderTitle.renderAddProjectTitle()
+                }
+
             }
         })
     });

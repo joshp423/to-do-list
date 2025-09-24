@@ -1,0 +1,23 @@
+
+
+
+.container {
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+}
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    padding-top: 80px;
+    gap: 5%;
+}
+
+.sidebar>div>a {
+    text-decoration: none;
+}
+
+.contentContainer {
+    display: grid;
+    grid-template-rows: 1fr 8fr;
+}

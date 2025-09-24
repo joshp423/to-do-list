@@ -5,12 +5,12 @@ class TitleRender {
         this.headerTitle = document.getElementById('headerTitle');
     }
 
-    renderProjectTitle(){ 
+    renderProjectsTitle(){ 
         headerTitle.innerText = "Projects";
         return;
     }
 
-    renderAddProjectForm(){
+    renderAddProjectTitle(){
         headerTitle.innerText = "Create Project";
         return;
     }
