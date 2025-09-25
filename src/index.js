@@ -1,20 +1,19 @@
+export let userToDos = [];
 import { renderTitle } from "./renderTitle";
 import { Project } from "./projectClass";
 import { initialiseProject } from "./initialiseProject";
 import { userProjects } from "./initialiseProject";
-import { renderProjects } from "./renderProjects";
+import { renderContent } from "./renderContent";
 import './style.css';
  
-export let userToDos = [];
 //initialise default project - will change to reading memory
 initialiseProject()
 console.log(userProjects)
 
 //after dom is loaded given project view is default, load projects to DOM
 addEventListener("DOMContentLoaded", () => {
-    renderProjects(userProjects, userToDos)
+    renderContent.renderProjects()
 })
-
 
 
 //sidebar tab logic
@@ -39,7 +38,7 @@ sidebar.forEach((item) => {
             // render content for tab
             if (item.id === "projects") {
                 renderTitle.renderProjectsTitle()
-                renderProjects(userProjects, userToDos)
+                renderContent.renderProjects()
             }
                 
             else if (item.id === "addproject") {

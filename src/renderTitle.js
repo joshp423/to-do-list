@@ -18,5 +18,5 @@ class TitleRender {
 }
 
 export const renderTitle = (() => {
-    return new TitleRender()
+    return new TitleRender();
 })();
