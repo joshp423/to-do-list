@@ -1,5 +1,6 @@
-
-
+p {
+    margin: 0;
+}
 
 .container {
     display: grid;
@@ -11,6 +12,7 @@
     flex-direction: column;
     padding-top: 80px;
     gap: 5%;
+    border: 1px solid black;
 }
 
 .sidebar>div>a {
@@ -20,4 +22,12 @@
 .contentContainer {
     display: grid;
     grid-template-rows: 1fr 8fr;
+    border: 1px solid black;
 }
+
+#content {
+    border: 1px solid black;
+    display: grid;
+    grid-template: 1fr 1fr / 1fr 1fr;
+}
+

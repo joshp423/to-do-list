@@ -1,6 +1,6 @@
 class TitleRender {
     
-    //change header to match content - should this be an iife?
+    //change header to match content 
     constructor() {
         this.headerTitle = document.getElementById('headerTitle');
     }
