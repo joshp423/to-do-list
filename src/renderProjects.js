@@ -1,9 +1,11 @@
+//function to render one instance of a project in the dom
 export function renderProjects(projectTitle, projectComplete, projectTodos){
+
     //project div
     const contentContainer = document.getElementById('content');
     const projectDiv = document.createElement('div');
     projectDiv.id = projectTitle;
-    contentContainer.append(projectDiv)
+    contentContainer.append(projectDiv);
 
     //project title
     const title = document.createElement('h2');
@@ -12,14 +14,20 @@ export function renderProjects(projectTitle, projectComplete, projectTodos){
     //project complete
     const complete = document.createElement('button')
     complete.innerText = projectComplete;
-    complete.type = "button"
+    complete.type = "button";
 
-    //project todos
+    //project todos and adding elements before todos
     const todos = document.createElement('ul');
+    projectDiv.append(title, complete, todos);
+    
     projectTodos.forEach((todoItem) =>{
-        const todo = document.createElement('li');
-        todo.innerText = todoItem.title
-        todos.append(todo);
+        if (todoItem.project === project.id) {
+            const todo = document.createElement('li');
+            todo.innerText = todoItem.title;
+            todos.append(todo);
+        }
+
+        
     })
         
 }
