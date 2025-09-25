@@ -1,36 +1,39 @@
-//function to render one instance of a project in the dom
-export function renderProjects(projectTitle, projectComplete, projectTodos){
+import { userToDos } from ".";
+import { userProjects } from "./initialiseProject";
 
-    //project div
+//function to render all projects in the dom
+export function renderProjects(userProjects, userToDos){
     const contentContainer = document.getElementById('content');
-    const projectDiv = document.createElement('div');
-    projectDiv.id = projectTitle;
-    contentContainer.append(projectDiv);
+    contentContainer.innerHTML = ''
+    userProjects.forEach((project) => {
 
-    //project title
-    const title = document.createElement('h2');
-    title.innerText = projectTitle;
+        //project div
+        const projectDiv = document.createElement('div');
+        projectDiv.id = project.title;
+        contentContainer.append(projectDiv);
 
-    //project complete
-    const complete = document.createElement('button')
-    complete.innerText = projectComplete;
-    complete.type = "button";
+        //project title
+        const title = document.createElement('h2');
+        title.innerText = project.title;
 
-    //project todos and adding elements before todos
-    const todos = document.createElement('ul');
-    projectDiv.append(title, complete, todos);
-    
-    projectTodos.forEach((todoItem) =>{
-        if (todoItem.project === project.id) {
-            const todo = document.createElement('li');
-            todo.innerText = todoItem.title;
-            todos.append(todo);
-        }
+        //project complete
+        const complete = document.createElement('button')
+        complete.innerText = project.complete;
+        complete.type = "button";
 
-        
-    })
-        
-}
+        //project todos and adding elements before todos
+        const todos = document.createElement('ul');
+        projectDiv.append(title, complete, todos);
+
+        userToDos.forEach((todoItem) =>{
+            if (todoItem.project === project.id) {
+                const todo = document.createElement('li');
+                todo.innerText = todoItem.title;
+                todos.append(todo);
+            }
+        }); 
+    });
+};
 
 
 

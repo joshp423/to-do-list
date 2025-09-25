@@ -7,7 +7,6 @@ export class Project {
 
         this.title = title;
         this.complete = "Not Complete";
-        this.toDos = [];
         this.id = crypto.randomUUID();
     };
 
