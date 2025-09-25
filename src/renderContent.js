@@ -1,5 +1,6 @@
 import { userProjects } from "./initialArrays";
 import { userToDos } from "./initialArrays";
+import { todo } from "./toDoClass";
 
 class ContentRender {
     constructor(){
@@ -29,7 +30,7 @@ class ContentRender {
 
             //project todos and adding elements before todos
             const todos = document.createElement('ul');
-            projectDiv.append(title, complete, todos);
+            projectDiv.append(title, todos, complete);
 
             this.userToDos.forEach((todoItem) =>{
                 if (todoItem.project === project.id) {
@@ -38,6 +39,11 @@ class ContentRender {
                     todos.append(todo);
                 }
             })
+
+            //if no to-do's tell the user that instead of blank
+            if (todos.innerText === "") {
+                        todos.innerText = "No To-do's";
+            }
         })
     };
 
