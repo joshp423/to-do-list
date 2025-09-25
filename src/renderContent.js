@@ -1,23 +1,22 @@
-import { userToDos } from ".";
-import { userProjects } from "./initialiseProject";
+import { userProjects } from "./initialArrays";
+import { userToDos } from "./initialArrays";
 
 class ContentRender {
     constructor(){
-        this.contentContainer = document.getElementById('headerTitle')
+        this.contentContainer = document.getElementById('content')
         this.userToDos = userToDos;
         this.userProjects = userProjects;
     }
     
     //function to render all projects in the dom
     renderProjects(){
-        const contentContainer = document.getElementById('content');
-        contentContainer.innerHTML = ''
+        this.contentContainer.innerHTML = '';
         this.userProjects.forEach((project) => {
 
             //project div
             const projectDiv = document.createElement('div');
             projectDiv.id = project.title;
-            contentContainer.append(projectDiv);
+            this.contentContainer.append(projectDiv);
 
             //project title
             const title = document.createElement('h2');
@@ -41,6 +40,24 @@ class ContentRender {
             })
         })
     };
+
+    //function to render the add project form
+    renderAddProjectsForm() {
+        //set up and add div and form
+        this.contentContainer.innerHTML = '';
+        const formContainer = document.createElement('div');
+        this.contentContainer.append(formContainer);
+        const addProjectForm = document.createElement('form');
+        formContainer.append(addProjectForm);
+        
+        //add form inputs and buttons
+        const projectTitleInput = document.createElement('input');
+        projectTitleInput.placeholder = "Project Title";
+        const projectformButton = document.createElement('button');
+        projectformButton.innerText = "Add Project";
+        projectformButton.type = 'submit';
+        addProjectForm.append(projectTitleInput, projectformButton);
+    }
 }
 
 export const renderContent = (() => {

@@ -11,7 +11,7 @@ class TitleRender {
     }
 
     renderAddProjectTitle(){
-        headerTitle.innerText = "Create Project";
+        headerTitle.innerText = "New Project";
         return;
     }
     

@@ -1,8 +1,8 @@
-export let userToDos = [];
+import { userToDos } from "./initialArrays";
 import { renderTitle } from "./renderTitle";
 import { Project } from "./projectClass";
 import { initialiseProject } from "./initialiseProject";
-import { userProjects } from "./initialiseProject";
+import { userProjects } from "./initialArrays";
 import { renderContent } from "./renderContent";
 import './style.css';
  
@@ -43,6 +43,7 @@ sidebar.forEach((item) => {
                 
             else if (item.id === "addproject") {
                 renderTitle.renderAddProjectTitle()
+                renderContent.renderAddProjectsForm()
             };
         }
     });

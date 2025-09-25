@@ -1,5 +1,5 @@
 import { Project } from "./projectClass";
-export let userProjects = [];
+import { userProjects } from "./initialArrays";
 
 //function so initial project loads on page load
 export function initialiseProject() {
