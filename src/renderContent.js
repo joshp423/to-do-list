@@ -24,9 +24,8 @@ class ContentRender {
             title.innerText = project.title;
 
             //project complete
-            const complete = document.createElement('button')
+            const complete = document.createElement('p')
             complete.innerText = project.complete;
-            complete.type = "button";
 
             //project todos and adding elements before todos
             const todos = document.createElement('ul');

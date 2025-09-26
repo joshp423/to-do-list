@@ -14,7 +14,6 @@ console.log(userProjects)
 //after dom is loaded given project view is default, load projects to DOM
 addEventListener("DOMContentLoaded", () => {
     renderContent.renderProjects()
-    
 })
 
 
