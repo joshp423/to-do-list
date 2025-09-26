@@ -5,6 +5,7 @@ import { initialiseProject } from "./initialiseProject";
 import { userProjects } from "./initialArrays";
 import { renderContent } from "./renderContent";
 import { addProjectClick } from "./addProjectClick";
+import { addEventProjectClick } from "./addEventProjectClick";
 import './style.css';
  
 //initialise default project - will change to reading memory
@@ -13,7 +14,7 @@ console.log(userProjects)
 
 //after dom is loaded given project view is default, load projects to DOM
 addEventListener("DOMContentLoaded", () => {
-    renderContent.renderProjects()
+    renderContent.renderProjectsProjectView()
 })
 
 
@@ -39,7 +40,8 @@ sidebar.forEach((item) => {
             // render content for tab
             if (item.id === "projects") {
                 renderTitle.renderProjectsTitle()
-                renderContent.renderProjects()
+                renderContent.renderProjectsProjectView()
+                addEventProjectClick()
             }
                 
             else if (item.id === "addproject") {

@@ -10,7 +10,7 @@ class ContentRender {
     }
     
     //function to render all projects in the dom
-    renderProjects(){
+    renderProjectsProjectView(){
         this.contentContainer.innerHTML = '';
         this.userProjects.forEach((project) => {
 

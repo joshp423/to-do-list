@@ -1,6 +1,7 @@
 import { addProject } from "./addProject";
 import { renderTitle } from "./renderTitle";
 import { renderContent } from "./renderContent";
+import { addEventProjectClick } from "./addEventProjectClick";
 
 export function addProjectClick(){
     const formButton = document.querySelectorAll('#content>div>form>button');
@@ -11,11 +12,12 @@ export function addProjectClick(){
         event.preventDefault();
         addProject();
         renderTitle.renderProjectsTitle();
-        renderContent.renderProjects();
+        renderContent.renderProjectsProjectView();
         addProjectsSidebar.classList.remove('active');
         addProjectsSidebar.classList.add('notActive');
         projectsSidebar.classList.add('notActive');
-        projectsSidebar.classList.remove('active');      
+        projectsSidebar.classList.remove('active');
+        addEventProjectClick()      
     });
 };
 
