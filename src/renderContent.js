@@ -48,6 +48,7 @@ class ContentRender {
 
     //function to render the add project form
     renderAddProjectsForm() {
+
         //set up and add div and form
         this.contentContainer.innerHTML = '';
         const formContainer = document.createElement('div');
@@ -62,6 +63,31 @@ class ContentRender {
         projectformButton.innerText = "Add Project";
         projectformButton.type = 'submit';
         addProjectForm.append(projectTitleInput, projectformButton);
+    }
+
+    //function to render individual project view
+    renderProjectSingular(project) {
+
+        //add Project Div
+        this.contentContainer.innerHTML = '';
+        const projectDiv = document.createElement('div');
+        projectDiv.id = project;
+        this.contentContainer.appendChild(projectDiv);
+
+        //add title
+        const projectTitle = document.createElement('h2')
+        projectTitle.innerText = project;
+
+        //add to-dos description, due date, priority (list by), notes and edit button,
+        // complete button. 
+
+        this.userToDos.forEach((todoItem) =>{
+                if (todoItem.project === project) {
+                    const todo = document.createElement('li');
+                    todo.innerText = todoItem.title;
+                    todos.append(todo);
+                }
+            })
     }
 }
 
