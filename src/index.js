@@ -15,11 +15,13 @@ console.log(userProjects)
 //after dom is loaded given project view is default, load projects to DOM
 addEventListener("DOMContentLoaded", () => {
     renderContent.renderProjectsProjectView()
+    addEventProjectClick()
 })
 
 
 //sidebar tab logic
 const sidebar = document.querySelectorAll('.sidebar>div');
+
 
 sidebar.forEach((item) => {
     item.addEventListener('click', () => {

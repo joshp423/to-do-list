@@ -83,10 +83,35 @@ class ContentRender {
 
         this.userToDos.forEach((todoItem) =>{
                 if (todoItem.project === project) {
-                    const todo = document.createElement('li');
+                    const todoDiv = document.createElement('div');
+                    todoDiv.id = todoItem.id;
+
+                    const todoTitle = document.createElement('p');
+                    todoTitle.innerText = todoDiv.title;
+
+                    const todoDesc = document.createElement('p');
+                    todoDesc.innerText = todoItem.description;
+
+                    const todoDueDate = document.createElement('p');
+                    todoDueDate.innerText = todoItem.dueDate;
+
+                    const todoPriority = document.createElement('p');
+                    todoPriority.innerText = todoDiv.priority;
+
+                    const todoComplete = document.createElement('button');
+                    if (todoItem.complete === false) {
+                        todoComplete.innerText = "Not Complete";
+                    }
+                    else {
+                        todoComplete.innerText = "Complete";
+                    }
+
                     todo.innerText = todoItem.title;
                     todos.append(todo);
                 }
+                if (todoTitle.innerText === "") {
+                        todos.innerText = "No To-do's";
+            }
             })
     }
 }
@@ -94,27 +119,3 @@ class ContentRender {
 export const renderContent = (() => {
     return new ContentRender();
 })();
-
-
-
-// class projectRender {
-//     constructor() {}
-
-//     renderProjectBox(contentDiv, projectTitle){
-//         const projectDiv = document.createElement('div');
-//         projectDiv.id = projectTitle;
-//         contentDiv.append(projectDiv)
-//     }
-
-//     renderProjectTitle(){}
-
-//     renderProjectComplete(){}
-
-//     renderProjectTodos(){}
-
-
-// }
-
-// export const renderProjects = (() => {
-//     return new projectRender()
-// })();
