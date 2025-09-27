@@ -121,20 +121,22 @@ class ContentRender {
                 todosDiv.innerText = "No To-do's";
         }
 
-        //Edit, complete, and add to-do buttons for project
+        //Rename, complete, and add to-do buttons for project
         const projectRename = document.createElement('button');
+        projectRename.id = "projectRename"
         projectRename.innerText = "Rename";
 
-        const projectEdit = document.createElement('button');
-        projectEdit.innerText = "Edit";
+        const projectComplete = document.createElement('button');
+        projectComplete.id = "projectComplete"
+        projectComplete.innerText = "Complete";
 
         const projectAddToDo = document.createElement('button');
+        projectAddToDo.id = "projectAddToDo"
         projectAddToDo.innerText = "Add To-do";
         
-        projectDiv.append(projectRename, projectEdit, projectAddToDo);
+        projectDiv.append(projectRename, projectComplete, projectAddToDo);
     }
 }
-
 
 export const renderContent = (() => {
     return new ContentRender();

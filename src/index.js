@@ -13,6 +13,7 @@ initialiseProject()
 console.log(userProjects)
 
 //after dom is loaded given project view is default, load projects to DOM
+//add EL for singular project view
 addEventListener("DOMContentLoaded", () => {
     renderContent.renderProjectsProjectView()
     addEventProjectClick()

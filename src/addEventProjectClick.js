@@ -1,4 +1,5 @@
 import { renderContent } from "./renderContent";
+import { addEventProjectButtons } from "./addEventProjectButtons";
 
 export function addEventProjectClick(){
     const domProjects = document.querySelectorAll('#content>div')
@@ -7,6 +8,7 @@ export function addEventProjectClick(){
             const projectId = project.id
             console.log(projectId)
             renderContent.renderProjectSingular(projectId)
+            addEventProjectButtons()
         })
     })
 }
