@@ -41,7 +41,7 @@ class ContentRender {
 
             //if no to-do's tell the user that instead of blank
             if (todos.innerText === "") {
-                        todos.innerText = "No To-do's";
+                todos.innerText = "No To-do's";
             }
         })
     };
@@ -68,8 +68,9 @@ class ContentRender {
     //function to render individual project view
     renderProjectSingular(project) {
 
-        //add Project Div
+        //clear current content
         this.contentContainer.innerHTML = '';
+        //add Project Div
         const projectDiv = document.createElement('div');
         projectDiv.id = project;
         this.contentContainer.appendChild(projectDiv);
@@ -77,44 +78,63 @@ class ContentRender {
         //add title
         const projectTitle = document.createElement('h2')
         projectTitle.innerText = project;
+        projectDiv.append(projectTitle)
 
         //add to-dos description, due date, priority (list by), notes and edit button,
         // complete button. 
+        const todosDiv = document.createElement('div')
+        projectDiv.append(todosDiv)
 
-        this.userToDos.forEach((todoItem) =>{
-                if (todoItem.project === project) {
-                    const todoDiv = document.createElement('div');
-                    todoDiv.id = todoItem.id;
+        this.userToDos.forEach((todoItem) => {
+            if (todoItem.project === project) {
+                const todoDiv = document.createElement('div');
+                todoDiv.id = todoItem.id;
+                projectDiv.appendChild(todoDiv)
 
-                    const todoTitle = document.createElement('p');
-                    todoTitle.innerText = todoDiv.title;
+                const todoTitle = document.createElement('p');
+                todoTitle.innerText = todoDiv.title;
 
-                    const todoDesc = document.createElement('p');
-                    todoDesc.innerText = todoItem.description;
+                const todoDesc = document.createElement('p');
+                todoDesc.innerText = todoItem.description;
 
-                    const todoDueDate = document.createElement('p');
-                    todoDueDate.innerText = todoItem.dueDate;
+                const todoDueDate = document.createElement('p');
+                todoDueDate.innerText = todoItem.dueDate;
 
-                    const todoPriority = document.createElement('p');
-                    todoPriority.innerText = todoDiv.priority;
+                const todoPriority = document.createElement('p');
+                todoPriority.innerText = todoDiv.priority;
 
-                    const todoComplete = document.createElement('button');
-                    if (todoItem.complete === false) {
-                        todoComplete.innerText = "Not Complete";
-                    }
-                    else {
-                        todoComplete.innerText = "Complete";
-                    }
+                const todoEdit = document.createElement('button');
+                todoEdit.innerText = "Edit";
 
-                    todo.innerText = todoItem.title;
-                    todos.append(todo);
+                const todoComplete = document.createElement('button');
+                if (todoItem.complete === false) {
+                    todoComplete.innerText = "Not Complete";
                 }
-                if (todoTitle.innerText === "") {
-                        todos.innerText = "No To-do's";
+                else {
+                    todoComplete.innerText = "Complete";
+                }
+                todoDiv.append(todoTitle, todoDesc, todoPriority, todoEdit, todoComplete);
             }
-            })
+        })
+
+        if (!todosDiv.firstChild) {
+                todosDiv.innerText = "No To-do's";
+        }
+
+        //Edit, complete, and add to-do buttons for project
+        const projectRename = document.createElement('button');
+        projectRename.innerText = "Rename";
+
+        const projectEdit = document.createElement('button');
+        projectEdit.innerText = "Edit";
+
+        const projectAddToDo = document.createElement('button');
+        projectAddToDo.innerText = "Add To-do";
+        
+        projectDiv.append(projectRename, projectEdit, projectAddToDo);
     }
 }
+
 
 export const renderContent = (() => {
     return new ContentRender();
