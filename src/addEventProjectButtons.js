@@ -1,5 +1,6 @@
 import { renderContent } from "./renderContent"
 import { addEventsProjectEditForm } from "./addEventsProjectEditForm"
+import { renderTitle } from "./renderTitle"
 
 export function addEventProjectButtons(){
     const project = document.querySelector('#content>div')
@@ -7,7 +8,7 @@ export function addEventProjectButtons(){
 
     domProjectButtons.forEach((button) => {
         button.addEventListener('click', () => {
-            console.log("button pressed")
+            renderTitle.renderEditProjectTitle(project.id)
             //switch statement to manage different button functionality
             switch (button.id) {
                 case "projectEdit":
@@ -16,6 +17,7 @@ export function addEventProjectButtons(){
                     break;
             
                 case "projectComplete":
+                    
                     break;
                 
                 case "projectAddToDo":
