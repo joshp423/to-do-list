@@ -122,9 +122,9 @@ class ContentRender {
         }
 
         //Rename, complete, and add to-do buttons for project
-        const projectRename = document.createElement('button');
-        projectRename.id = "projectRename"
-        projectRename.innerText = "Rename";
+        const projectEdit = document.createElement('button');
+        projectEdit.id = "projectEdit"
+        projectEdit.innerText = "Edit Project";
 
         const projectComplete = document.createElement('button');
         projectComplete.id = "projectComplete"
@@ -134,7 +134,34 @@ class ContentRender {
         projectAddToDo.id = "projectAddToDo"
         projectAddToDo.innerText = "Add To-do";
         
-        projectDiv.append(projectRename, projectComplete, projectAddToDo);
+        projectDiv.append(projectEdit, projectComplete, projectAddToDo);
+    }
+
+    renderRenameProjectForm() {
+
+        //clear content div
+        this.contentContainer.innerHTML = '';
+
+        //add div and form to contentcontainer
+        const formContainer = document.createElement('div');
+        this.contentContainer.append(formContainer);
+        const RenameProjectForm = document.createElement('form');
+        formContainer.append(RenameProjectForm);
+        
+        //add form inputs and buttons
+        const projectTitleRenameInput = document.createElement('input');
+        projectTitleRenameInput.placeholder = "New Project Title";
+        const projectformButton = document.createElement('button');
+        projectformButton.innerText = "Confirm Rename Project";
+        projectformButton.type = 'submit';
+        RenameProjectForm.append(projectTitleRenameInput, projectformButton);
+        
+        //add delete button
+        const projectDeleteButton = document.createElement('button');
+        projectDeleteButton.id = "projectDeleteButton";
+        projectDeleteButton.innerText = "Delete Project and To-do's"
+        formContainer.append(projectDeleteButton);
+        
     }
 }
 
