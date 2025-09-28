@@ -14,6 +14,10 @@ class TitleRender {
         headerTitle.innerText = "New Project";
         return;
     }
+
+    renderEditProjectsTitle(){
+        this.headerTitle.innerText;
+    }
     
 }
 
