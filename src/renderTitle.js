@@ -15,8 +15,12 @@ class TitleRender {
         return;
     }
 
-    renderEditProjectsTitle(){
-        this.headerTitle.innerText;
+    renderViewProjectTitle(){
+        headerTitle.innerText = "View and Edit Project"
+    }
+
+    renderEditProjectTitle(project){
+        headerTitle.innerText = `Edit ${project}`
     }
     
 }
