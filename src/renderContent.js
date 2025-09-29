@@ -11,6 +11,13 @@ class ContentRender {
     
     //function to render all projects in the dom
     renderProjectsProjectView(){
+
+        //projects check
+        if (userProjects.length === 0) {
+            this.contentContainer.innerHTML = "No projects"
+            return;
+        }
+
         this.contentContainer.innerHTML = '';
         this.userProjects.forEach((project) => {
 
@@ -43,7 +50,8 @@ class ContentRender {
             if (todos.innerText === "") {
                 todos.innerText = "No To-do's";
             }
-        })
+        });
+        
     };
 
     //function to render the add project form
@@ -107,12 +115,7 @@ class ContentRender {
                 todoEdit.innerText = "Edit";
 
                 const todoComplete = document.createElement('button');
-                if (todoItem.complete === false) {
-                    todoComplete.innerText = "Not Complete";
-                }
-                else {
-                    todoComplete.innerText = "Complete";
-                }
+                todoComplete.innerText = todoItem.complete;
                 todoDiv.append(todoTitle, todoDesc, todoPriority, todoEdit, todoComplete);
             }
         })
@@ -123,15 +126,16 @@ class ContentRender {
 
         //Rename, complete, and add to-do buttons for project
         const projectEdit = document.createElement('button');
-        projectEdit.id = "projectEdit"
+        projectEdit.id = "projectEdit";
         projectEdit.innerText = "Edit Project";
 
         const projectComplete = document.createElement('button');
-        projectComplete.id = "projectComplete"
-        projectComplete.innerText = "Complete";
+        projectComplete.id = "projectComplete";
+        projectComplete.innerText = "Toggle Completion";
+        projectComplete.type = "button";
 
         const projectAddToDo = document.createElement('button');
-        projectAddToDo.id = "projectAddToDo"
+        projectAddToDo.id = "projectAddToDo";
         projectAddToDo.innerText = "Add To-do";
         
         projectDiv.append(projectEdit, projectComplete, projectAddToDo);
