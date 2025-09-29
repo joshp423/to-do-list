@@ -183,53 +183,58 @@ class ContentRender {
 
         //add form labels, inputs, and buttons
         const titleDiv = document.createElement('div');
+        titleDiv.id = "title";
         const titleInputLabel = document.createElement('label');
         titleInputLabel.innerText = "Title:";
         const titleInput = document.createElement('input');
 
         const descDiv = document.createElement('div');
+        descDiv.id = "desc";
         const descInputLabel = document.createElement('label');
         descInputLabel.innerText = "Description:";
         const descInput = document.createElement('input');
 
         const dueDateDiv = document.createElement('div');
+        dueDateDiv.id = "dueDate";
         const dueDateInputLabel = document.createElement('label');
         dueDateInputLabel.innerText = "Due Date:";
         const dueDateInput = document.createElement('input');
 
         const priorityDiv = document.createElement('div');
-        const priorityInputLow = document.createElement('input');
-        priorityInputLow.type = "radio";
+        priorityDiv.id = "priority";
+        const prioritySelect = document.createElement('select')
+        const priorityInputLow = document.createElement('option');
         priorityInputLow.value = "Low";
-        const priorityInputLowLabel = document.createElement('label');
-        priorityInputLowLabel.innerText = "Low";
+        priorityInputLow.name = "priority";
+        priorityInputLow.innerText = "Low";
         
-        const priorityInputMedium = document.createElement('input');
-        priorityInputMedium.type = "radio";
+        const priorityInputMedium = document.createElement('option');
         priorityInputMedium.value = "Medium";
-        const priorityInputMediumLabel = document.createElement('label');
-        priorityInputMediumLabel.innerText = "Medium";
+        priorityInputMedium.name = "priority";
+        priorityInputMedium.innerText = "Medium";
         
-        const priorityInputHigh = document.createElement('input');
-        priorityInputHigh.type = "radio";
+        const priorityInputHigh = document.createElement('option');
         priorityInputHigh.value = "High";
-        const priorityInputHighLabel = document.createElement('label');
-        priorityInputHighLabel.innerText = "High";
+        priorityInputHigh.name = "priority";
+        priorityInputHigh.innerText = "High";
 
         const notesDiv = document.createElement('div');
+        notesDiv.id = "notes"
         const notesLabel = document.createElement('label');
-        notesLabel.innerText = "Notes:"
+        notesLabel.innerText = "Notes:";
         const notesInput = document.createElement('input');
 
-        addToDoForm.append(titleDiv, descDiv, dueDateDiv, priorityDiv, notesDiv);
+        const submitButton = document.createElement('button');
+        submitButton.innerText = "Submit";
+        submitButton.type = "submit";
+
+        //append elements
+        addToDoForm.append(titleDiv, descDiv, dueDateDiv, priorityDiv, notesDiv, submitButton);
         titleDiv.append(titleInputLabel, titleInput);
         descDiv.append(descInputLabel, descInput);
         dueDateDiv.append(dueDateInputLabel, dueDateInput);
-        priorityDiv.append(
-            priorityInputLow, priorityInputLowLabel,
-            priorityInputMedium, priorityInputMediumLabel,
-            priorityInputHigh, priorityInputHighLabel
-        );
+        priorityDiv.appendChild(prioritySelect);
+        prioritySelect.append(priorityInputLow, priorityInputMedium, priorityInputHigh);
         notesDiv.append(notesLabel, notesInput);
     }
 }

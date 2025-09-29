@@ -3,6 +3,7 @@ import { addEventsProjectEditForm } from "./addEventsProjectEditForm"
 import { renderTitle } from "./renderTitle"
 import { EditProjectFunctions } from "./editProjectFunctions"
 import { addEventProjectClick } from "./addEventProjectClick"
+import { addEventAddToDoForm } from "./addEventAddToDoForm"
 
 export function addEventProjectButtons(){
     const project = document.querySelectorAll('#content>div')
@@ -28,6 +29,7 @@ export function addEventProjectButtons(){
                 case "projectAddToDo":
                     renderTitle.renderAddToDoTitle();
                     renderContent.renderAddToDoForm(project[0].id);
+                    addEventAddToDoForm(project[0].id);
                     break;
             }
         })
