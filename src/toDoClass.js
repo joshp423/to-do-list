@@ -9,7 +9,7 @@ export class todo {
         this.dueDate = dueDate;
         this.priority = priority;
         this.notes = notes;
-        this.complete = false;
+        this.complete = "Not Complete";
         this.project = project;
         this.id = crypto.randomUUID();
         

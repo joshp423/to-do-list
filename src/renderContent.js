@@ -132,7 +132,6 @@ class ContentRender {
         const projectComplete = document.createElement('button');
         projectComplete.id = "projectComplete";
         projectComplete.innerText = "Toggle Completion";
-        projectComplete.type = "button";
 
         const projectAddToDo = document.createElement('button');
         projectAddToDo.id = "projectAddToDo";
@@ -164,9 +163,74 @@ class ContentRender {
         //add delete button
         const projectDeleteButton = document.createElement('button');
         projectDeleteButton.id = "projectDeleteButton";
-        projectDeleteButton.innerText = "Delete Project and To-do's"
+        projectDeleteButton.innerText = "Delete Project and To-do's";
         formContainer.append(projectDeleteButton);
 
+    }
+
+    //function to render add to-do form
+    renderAddToDoForm(project) {
+
+        //clear content div
+        this.contentContainer.innerHTML = '';
+
+        //add div and form to contentcontainer
+        const formContainer = document.createElement('div');
+        formContainer.id = project;
+        this.contentContainer.append(formContainer);
+        const addToDoForm = document.createElement('form');
+        formContainer.append(addToDoForm);
+
+        //add form labels, inputs, and buttons
+        const titleDiv = document.createElement('div');
+        const titleInputLabel = document.createElement('label');
+        titleInputLabel.innerText = "Title:";
+        const titleInput = document.createElement('input');
+
+        const descDiv = document.createElement('div');
+        const descInputLabel = document.createElement('label');
+        descInputLabel.innerText = "Description:";
+        const descInput = document.createElement('input');
+
+        const dueDateDiv = document.createElement('div');
+        const dueDateInputLabel = document.createElement('label');
+        dueDateInputLabel.innerText = "Due Date:";
+        const dueDateInput = document.createElement('input');
+
+        const priorityDiv = document.createElement('div');
+        const priorityInputLow = document.createElement('input');
+        priorityInputLow.type = "radio";
+        priorityInputLow.value = "Low";
+        const priorityInputLowLabel = document.createElement('label');
+        priorityInputLowLabel.innerText = "Low";
+        
+        const priorityInputMedium = document.createElement('input');
+        priorityInputMedium.type = "radio";
+        priorityInputMedium.value = "Medium";
+        const priorityInputMediumLabel = document.createElement('label');
+        priorityInputMediumLabel.innerText = "Medium";
+        
+        const priorityInputHigh = document.createElement('input');
+        priorityInputHigh.type = "radio";
+        priorityInputHigh.value = "High";
+        const priorityInputHighLabel = document.createElement('label');
+        priorityInputHighLabel.innerText = "High";
+
+        const notesDiv = document.createElement('div');
+        const notesLabel = document.createElement('label');
+        notesLabel.innerText = "Notes:"
+        const notesInput = document.createElement('input');
+
+        addToDoForm.append(titleDiv, descDiv, dueDateDiv, priorityDiv, notesDiv);
+        titleDiv.append(titleInputLabel, titleInput);
+        descDiv.append(descInputLabel, descInput);
+        dueDateDiv.append(dueDateInputLabel, dueDateInput);
+        priorityDiv.append(
+            priorityInputLow, priorityInputLowLabel,
+            priorityInputMedium, priorityInputMediumLabel,
+            priorityInputHigh, priorityInputHighLabel
+        );
+        notesDiv.append(notesLabel, notesInput);
     }
 }
 

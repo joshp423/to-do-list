@@ -22,6 +22,10 @@ class TitleRender {
     renderEditProjectTitle(project){
         headerTitle.innerText = `Edit ${project}`;
     }
+
+    renderAddToDoTitle(){
+        headerTitle.innerText = "Add New To-do";
+    }
     
 }
 

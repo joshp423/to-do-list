@@ -28,7 +28,7 @@ export class EditProjectFunctions {
         });
     };
     
-    static completeProject(selectedProject) {
+    static toggleCompleteProject(selectedProject) {
 
         //change relevant complete status
         userProjects.forEach((project) => {
