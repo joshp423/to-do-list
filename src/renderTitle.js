@@ -27,6 +27,9 @@ class TitleRender {
         headerTitle.innerText = "Add New To-do";
     }
     
+    renderEditToDoTitle(){
+        headerTitle.innerText = "Edit To-do";
+    }
 }
 
 export const renderTitle = (() => {

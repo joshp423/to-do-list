@@ -1,6 +1,7 @@
 import { addToDo } from "./addToDo"
 import { renderContent } from "./renderContent"
 import { renderTitle } from "./renderTitle";
+import { addEventProjectButtons } from "./addEventProjectButtons";
 
 export function addEventAddToDoForm(){
     const submitButton = document.querySelector('#content>div>form>button')
@@ -10,6 +11,7 @@ export function addEventAddToDoForm(){
         addToDo(selectedProject[0].id)
         renderTitle.renderViewProjectTitle(selectedProject[0].id)
         renderContent.renderProjectSingular(selectedProject[0].id)
+        addEventProjectButtons();
     })
     
 }

@@ -113,20 +113,29 @@ class ContentRender {
                 todoTitle.innerText = todoItem.title;
 
                 const todoDesc = document.createElement('p');
-                todoDesc.innerText = `Description: \n${todoItem.description}`;
+                todoDesc.innerText = todoItem.description;
 
                 const todoDueDate = document.createElement('p');
                 todoDueDate.innerText = `Due Date: \n${todoItem.dueDate}`;
 
                 const todoPriority = document.createElement('p');
-                todoPriority.innerText = todoItem.priority;
-
-                const todoEdit = document.createElement('button');
-                todoEdit.innerText = "View/Edit";
+                todoPriority.innerText = `Task Priority: ${todoItem.priority}`;
+                switch (todoItem.priority) {
+                    case "Low":
+                        todoPriority.style.color = "yellow";
+                        break;
+                    case "Medium":
+                        todoPriority.style.color = "orange";
+                        break;
+                    case "High":
+                        todoPriority.style.color = "red";
+                        break;
+                }
 
                 const todoComplete = document.createElement('p');
                 todoComplete.innerText = todoItem.complete;
-                todoDiv.append(todoTitle, todoDesc, todoPriority, todoEdit, todoComplete);
+                
+                todoDiv.append(todoTitle, todoDesc, todoDueDate, todoPriority, todoComplete);
             }
         })
 
@@ -154,7 +163,7 @@ class ContentRender {
         projectDiv.append(projectEdit, projectComplete, projectAddToDo);
     }
 
-    renderRenameProjectForm(project) {
+    renderEditProjectForm(project) {
 
         //clear content div
         this.contentContainer.innerHTML = '';
@@ -213,6 +222,7 @@ class ContentRender {
         const dueDateInputLabel = document.createElement('label');
         dueDateInputLabel.innerText = "Due Date:";
         const dueDateInput = document.createElement('input');
+        dueDateInput.type = "date"
 
         const priorityDiv = document.createElement('div');
         priorityDiv.id = "priority";
@@ -250,6 +260,214 @@ class ContentRender {
         priorityDiv.appendChild(prioritySelect);
         prioritySelect.append(priorityInputLow, priorityInputMedium, priorityInputHigh);
         notesDiv.append(notesLabel, notesInput);
+    }
+
+    //function to render to-do edit form
+    renderEditToDoForm(todo) {
+        //clear content div
+        this.contentContainer.innerHTML = '';
+
+        //add div and form to contentcontainer
+        const formContainer = document.createElement('div');
+        formContainer.id = project;
+        this.contentContainer.append(formContainer);
+        const addToDoForm = document.createElement('form');
+        formContainer.append(addToDoForm);
+
+        //add form labels, inputs, and buttons
+        const titleDiv = document.createElement('div');
+        titleDiv.id = "title";
+        const titleInputLabel = document.createElement('label');
+        titleInputLabel.innerText = "Title:";
+        const titleInput = document.createElement('input');
+
+        const descDiv = document.createElement('div');
+        descDiv.id = "desc";
+        const descInputLabel = document.createElement('label');
+        descInputLabel.innerText = "Description:";
+        const descInput = document.createElement('input');
+
+        const dueDateDiv = document.createElement('div');
+        dueDateDiv.id = "dueDate";
+        const dueDateInputLabel = document.createElement('label');
+        dueDateInputLabel.innerText = "Due Date:";
+        const dueDateInput = document.createElement('input');
+        dueDateInput.type = "date"
+
+        const priorityDiv = document.createElement('div');
+        priorityDiv.id = "priority";
+        const prioritySelect = document.createElement('select')
+        const priorityInputLow = document.createElement('option');
+        priorityInputLow.value = "Low";
+        priorityInputLow.name = "priority";
+        priorityInputLow.innerText = "Low";
+        
+        const priorityInputMedium = document.createElement('option');
+        priorityInputMedium.value = "Medium";
+        priorityInputMedium.name = "priority";
+        priorityInputMedium.innerText = "Medium";
+        
+        const priorityInputHigh = document.createElement('option');
+        priorityInputHigh.value = "High";
+        priorityInputHigh.name = "priority";
+        priorityInputHigh.innerText = "High";
+
+        const notesDiv = document.createElement('div');
+        notesDiv.id = "notes"
+        const notesLabel = document.createElement('label');
+        notesLabel.innerText = "Notes:";
+        const notesInput = document.createElement('input');
+
+        const submitButton = document.createElement('button');
+        submitButton.innerText = "Submit";
+        submitButton.type = "submit";
+
+        //append elements
+        addToDoForm.append(titleDiv, descDiv, dueDateDiv, priorityDiv, notesDiv, submitButton);
+        titleDiv.append(titleInputLabel, titleInput);
+        descDiv.append(descInputLabel, descInput);
+        dueDateDiv.append(dueDateInputLabel, dueDateInput);
+        priorityDiv.appendChild(prioritySelect);
+        prioritySelect.append(priorityInputLow, priorityInputMedium, priorityInputHigh);
+        notesDiv.append(notesLabel, notesInput);
+    }
+
+    //function to render individual to-do
+    renderToDoSingularDefault(selectedToDo){
+
+        let toDoInfo;
+        userToDos.forEach((todoItem) => {
+            if (todoItem.id === selectedToDo) {
+                toDoInfo = todoItem;
+            }
+        })
+
+        //clear current content
+        this.contentContainer.innerHTML = '';
+
+        //add to do Div
+        const toDoDiv = document.createElement('div');
+        toDoDiv.id = toDoInfo.title;
+        this.contentContainer.appendChild(toDoDiv);
+
+        //add title, desc, duedate, priority, notes, complete
+        const toDoTitle = document.createElement('h2')
+        toDoTitle.innerText = toDoInfo.title;
+        toDoTitle.id = "Title";
+
+        const todoDesc = document.createElement('p');
+        todoDesc.innerText = toDoInfo.description;
+        todoDesc.id = "Desc";
+
+        const todoDueDate = document.createElement('p');
+        todoDueDate.innerText = `Due Date: \n${toDoInfo.dueDate}`;
+        todoDueDate.id = "dueDate";
+
+        const todoPriority = document.createElement('p');
+        todoPriority.innerText = `Task Priority: ${toDoInfo.priority}`;
+        todoPriority.id = "Priority";
+        switch (toDoInfo.priority) {
+            case "Low":
+                todoPriority.style.color = "yellow";
+                break;
+            case "Medium":
+                todoPriority.style.color = "orange";
+                break;
+            case "High":
+                todoPriority.style.color = "red";
+                break;
+        }
+
+        const todoComplete = document.createElement('p');
+        todoComplete.innerText = toDoInfo.complete;
+        todoComplete.id = "Complete";
+
+        const todoNotes = document.createElement('p');
+        todoNotes.innerText = toDoInfo.notes;
+        todoNotes.id = "Notes";
+
+        //add complete toggle button and instruction p
+        const toggleCompleteToDo = document.createElement('button');
+        toggleCompleteToDo.innerText = "Toggle Complete";
+        toggleCompleteToDo.id = "toggleComplete";
+
+        const explainer = document.createElement('p');
+        explainer.id ="toDoExplainer";
+        explainer.innerText = "Click a field to edit";
+
+        toDoDiv.append(
+            toDoTitle, todoDesc, todoDueDate, todoPriority,
+            todoNotes, todoComplete, toggleCompleteToDo, explainer
+        );
+    }
+
+    //function to dynamically render form for editing to dos
+    renderToDoSingularDefault(selectedToDo, title, desc, dueDate, priority, notes){
+
+        let toDoInfo;
+        userToDos.forEach((todoItem) => {
+            if (todoItem.id === selectedToDo) {
+                toDoInfo = todoItem;
+            }
+        })
+
+        //clear current content
+        this.contentContainer.innerHTML = '';
+
+        //add to do Div
+        const toDoDiv = document.createElement('div');
+        toDoDiv.id = toDoInfo.title;
+        this.contentContainer.appendChild(toDoDiv);
+
+        //add title, desc, duedate, priority, notes, complete
+        const toDoTitle = document.createElement(title)
+        toDoTitle.innerText = toDoInfo.title;
+        toDoTitle.id = "Title";
+
+        const todoDesc = document.createElement(desc);
+        todoDesc.innerText = toDoInfo.description;
+        todoDesc.id = "Desc";
+
+        const todoDueDate = document.createElement(dueDate);
+        todoDueDate.innerText = `Due Date: \n${toDoInfo.dueDate}`;
+        todoDueDate.id = "dueDate";
+
+        const todoPriority = document.createElement(priority);
+        todoPriority.innerText = `Task Priority: ${toDoInfo.priority}`;
+        todoPriority.id = "Priority";
+        switch (toDoInfo.priority) {
+            case "Low":
+                todoPriority.style.color = "yellow";
+                break;
+            case "Medium":
+                todoPriority.style.color = "orange";
+                break;
+            case "High":
+                todoPriority.style.color = "red";
+                break;
+        }
+
+        const todoComplete = document.createElement('p');
+        todoComplete.innerText = toDoInfo.complete;
+        todoComplete.id = "Complete";
+
+        const todoNotes = document.createElement(notes);
+        todoNotes.innerText = toDoInfo.notes;
+        todoNotes.id = "Notes";
+
+        //add complete toggle button and instruction p
+        const toggleCompleteToDo = document.createElement('button');
+        toggleCompleteToDo.innerText = "Toggle Complete";
+        toggleCompleteToDo.id = "toggleComplete";
+
+        const explainer = document.createElement('p');
+        explainer.id ="toDoExplainer";
+        explainer.innerText = "Click a field to edit";
+
+        toDoDiv.append(
+            toDoTitle, todoDesc, todoDueDate, todoPriority,
+            todoNotes, todoComplete, toggleCompleteToDo, explainer
+        );
     }
 }
 

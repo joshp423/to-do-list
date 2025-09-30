@@ -4,10 +4,12 @@ import { renderTitle } from "./renderTitle"
 import { EditProjectFunctions } from "./editProjectFunctions"
 import { addEventProjectClick } from "./addEventProjectClick"
 import { addEventAddToDoForm } from "./addEventAddToDoForm"
+import { userToDos } from "./initialArrays"
 
 export function addEventProjectButtons(){
-    const project = document.querySelectorAll('#content>div')
-    const domProjectButtons = document.querySelectorAll('#content>div>button')
+    const project = document.querySelectorAll('#content>div');
+    const domProjectButtons = document.querySelectorAll('#content>div>button');
+    const todos = document.querySelectorAll('#todos>div')
     domProjectButtons.forEach((button) => {
         button.addEventListener('click', () => {
             
@@ -15,7 +17,7 @@ export function addEventProjectButtons(){
             switch (button.id) {
                 case "projectEdit":
                     renderTitle.renderEditProjectTitle(project[0].id);
-                    renderContent.renderRenameProjectForm(project[0].id);
+                    renderContent.renderEditProjectForm(project[0].id);
                     addEventsProjectEditForm();
                     break;
             
@@ -32,6 +34,13 @@ export function addEventProjectButtons(){
                     addEventAddToDoForm(project[0].id);
                     break;
             }
+        })
+    })
+    todos.forEach((todo) => {
+        todo.addEventListener('click', () => {
+            renderContent.renderToDoSingularDefault(todo.id);
+            renderTitle.renderEditToDoTitle();
+            
         })
     })
 }
