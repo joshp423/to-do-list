@@ -333,7 +333,7 @@ class ContentRender {
     }
 
     //function to render individual to-do
-    renderToDoSingularDefault(selectedToDo){
+    renderToDoSingularDefault(selectedToDo) {
 
         let toDoInfo;
         userToDos.forEach((todoItem) => {
@@ -398,19 +398,20 @@ class ContentRender {
         toDoDiv.append(
             toDoTitle, todoDesc, todoDueDate, todoPriority,
             todoNotes, todoComplete, toggleCompleteToDo, explainer
-        );
+        )
     }
 
     //function to dynamically render form for editing to dos
-    renderToDoSingularDefault(selectedToDo, title, desc, dueDate, priority, notes){
+    renderToDoSingularDynamic(selectedToDo, title, desc, dueDate, priority, notes){
 
         let toDoInfo;
         userToDos.forEach((todoItem) => {
             if (todoItem.id === selectedToDo) {
                 toDoInfo = todoItem;
+                
             }
         })
-
+        console.log(toDoInfo)
         //clear current content
         this.contentContainer.innerHTML = '';
 
@@ -420,19 +421,19 @@ class ContentRender {
         this.contentContainer.appendChild(toDoDiv);
 
         //add title, desc, duedate, priority, notes, complete
-        const toDoTitle = document.createElement(title)
+        const toDoTitle = title
         toDoTitle.innerText = toDoInfo.title;
         toDoTitle.id = "Title";
 
-        const todoDesc = document.createElement(desc);
+        const todoDesc = desc;
         todoDesc.innerText = toDoInfo.description;
         todoDesc.id = "Desc";
 
-        const todoDueDate = document.createElement(dueDate);
+        const todoDueDate = dueDate;
         todoDueDate.innerText = `Due Date: \n${toDoInfo.dueDate}`;
         todoDueDate.id = "dueDate";
 
-        const todoPriority = document.createElement(priority);
+        const todoPriority = priority;
         todoPriority.innerText = `Task Priority: ${toDoInfo.priority}`;
         todoPriority.id = "Priority";
         switch (toDoInfo.priority) {
@@ -451,7 +452,7 @@ class ContentRender {
         todoComplete.innerText = toDoInfo.complete;
         todoComplete.id = "Complete";
 
-        const todoNotes = document.createElement(notes);
+        const todoNotes = notes;
         todoNotes.innerText = toDoInfo.notes;
         todoNotes.id = "Notes";
 

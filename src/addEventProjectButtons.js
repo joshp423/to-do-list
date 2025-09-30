@@ -4,6 +4,7 @@ import { renderTitle } from "./renderTitle"
 import { EditProjectFunctions } from "./editProjectFunctions"
 import { addEventProjectClick } from "./addEventProjectClick"
 import { addEventAddToDoForm } from "./addEventAddToDoForm"
+import { addEventViewEditToDo } from "./addEventViewEditToDo"
 import { userToDos } from "./initialArrays"
 
 export function addEventProjectButtons(){
@@ -40,7 +41,7 @@ export function addEventProjectButtons(){
         todo.addEventListener('click', () => {
             renderContent.renderToDoSingularDefault(todo.id);
             renderTitle.renderEditToDoTitle();
-            
+            addEventViewEditToDo();
         })
     })
 }
