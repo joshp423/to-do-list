@@ -24,5 +24,5 @@ export function addToDo(selectedProject){
         dueDateInput.value, priorityInput.value,
         notesInput.value, projectinfo
     ));
-
+    console.log(userToDos)
 }

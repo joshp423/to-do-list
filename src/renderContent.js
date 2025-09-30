@@ -74,33 +74,41 @@ class ContentRender {
     }
 
     //function to render individual project view
-    renderProjectSingular(project) {
+    renderProjectSingular(selectedProject) {
 
+        //match project to userproject ID
+        let projectMatch;
+        userProjects.forEach((project) => {
+            if (selectedProject === project.title) {
+                projectMatch = project.id
+            }
+        })
         //clear current content
         this.contentContainer.innerHTML = '';
         //add Project Div
         const projectDiv = document.createElement('div');
-        projectDiv.id = project;
+        projectDiv.id = selectedProject;
         this.contentContainer.appendChild(projectDiv);
 
         //add title
         const projectTitle = document.createElement('h2')
-        projectTitle.innerText = project;
+        projectTitle.innerText = selectedProject;
         projectDiv.append(projectTitle)
 
         //add to-dos description, due date, priority (list by), notes and edit button,
-        // complete button. 
+        //complete button. 
         const todosDiv = document.createElement('div')
+        todosDiv.id = "todos"
         projectDiv.append(todosDiv)
 
-        this.userToDos.forEach((todoItem) => {
-            if (todoItem.project === project) {
+        userToDos.forEach((todoItem) => {
+            if (todoItem.project === projectMatch) {
                 const todoDiv = document.createElement('div');
                 todoDiv.id = todoItem.id;
-                projectDiv.appendChild(todoDiv)
+                todosDiv.appendChild(todoDiv)
 
                 const todoTitle = document.createElement('p');
-                todoTitle.innerText = todoDiv.title;
+                todoTitle.innerText = todoItem.title;
 
                 const todoDesc = document.createElement('p');
                 todoDesc.innerText = todoItem.description;
@@ -109,10 +117,10 @@ class ContentRender {
                 todoDueDate.innerText = todoItem.dueDate;
 
                 const todoPriority = document.createElement('p');
-                todoPriority.innerText = todoDiv.priority;
+                todoPriority.innerText = todoItem.priority;
 
                 const todoEdit = document.createElement('button');
-                todoEdit.innerText = "Edit";
+                todoEdit.innerText = "View/Edit";
 
                 const todoComplete = document.createElement('button');
                 todoComplete.innerText = todoItem.complete;
