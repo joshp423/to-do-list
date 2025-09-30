@@ -103,18 +103,20 @@ class ContentRender {
 
         userToDos.forEach((todoItem) => {
             if (todoItem.project === projectMatch) {
+
+                
                 const todoDiv = document.createElement('div');
                 todoDiv.id = todoItem.id;
                 todosDiv.appendChild(todoDiv)
 
-                const todoTitle = document.createElement('p');
+                const todoTitle = document.createElement('h3');
                 todoTitle.innerText = todoItem.title;
 
                 const todoDesc = document.createElement('p');
-                todoDesc.innerText = todoItem.description;
+                todoDesc.innerText = `Description: \n${todoItem.description}`;
 
                 const todoDueDate = document.createElement('p');
-                todoDueDate.innerText = todoItem.dueDate;
+                todoDueDate.innerText = `Due Date: \n${todoItem.dueDate}`;
 
                 const todoPriority = document.createElement('p');
                 todoPriority.innerText = todoItem.priority;
@@ -122,7 +124,7 @@ class ContentRender {
                 const todoEdit = document.createElement('button');
                 todoEdit.innerText = "View/Edit";
 
-                const todoComplete = document.createElement('button');
+                const todoComplete = document.createElement('p');
                 todoComplete.innerText = todoItem.complete;
                 todoDiv.append(todoTitle, todoDesc, todoPriority, todoEdit, todoComplete);
             }
@@ -130,6 +132,10 @@ class ContentRender {
 
         if (!todosDiv.firstChild) {
                 todosDiv.innerText = "No To-do's";
+        }
+        else {
+            const toDoSectionTitle = document.createElement('h2');
+                toDoSectionTitle
         }
 
         //Rename, complete, and add to-do buttons for project
