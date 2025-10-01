@@ -6,7 +6,7 @@ export class EditProjectFunctions {
         //create variables for user input and update userProjects array 
         const newTitle = document.querySelectorAll('#content>div>form>input');
         
-        //loop through projects to find the matching title
+        //loop through projects to find the matching title - should use ID
         userProjects.forEach((project) => {
             if (project.title === selectedProject) {
                 project.title = newTitle[0].value;

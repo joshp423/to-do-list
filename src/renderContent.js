@@ -347,7 +347,7 @@ class ContentRender {
 
         //add to do Div
         const toDoDiv = document.createElement('div');
-        toDoDiv.id = toDoInfo.title;
+        toDoDiv.id = toDoInfo.id;
         this.contentContainer.appendChild(toDoDiv);
 
         //add title, desc, duedate, priority, notes, complete
@@ -408,7 +408,7 @@ class ContentRender {
         userToDos.forEach((todoItem) => {
             if (todoItem.id === selectedToDo) {
                 toDoInfo = todoItem;
-                
+                console.log(toDoInfo)
             }
         })
         console.log(toDoInfo)
@@ -417,20 +417,26 @@ class ContentRender {
 
         //add to do Div
         const toDoDiv = document.createElement('div');
-        toDoDiv.id = toDoInfo.title;
+        toDoDiv.id = toDoInfo.id;
         this.contentContainer.appendChild(toDoDiv);
 
         //add title, desc, duedate, priority, notes, complete
         const toDoTitle = title
-        toDoTitle.innerText = toDoInfo.title;
+        if (toDoTitle.tagName === "H2") {
+            toDoTitle.innerText = toDoInfo.title;
+        }
         toDoTitle.id = "Title";
 
         const todoDesc = desc;
-        todoDesc.innerText = toDoInfo.description;
+        if (todoDesc.tagName === "P") {
+            todoDesc.innerText = toDoInfo.description;
+        }
         todoDesc.id = "Desc";
 
         const todoDueDate = dueDate;
-        todoDueDate.innerText = `Due Date: \n${toDoInfo.dueDate}`;
+        if (todoDueDate.tagName === "P") {
+            todoDueDate.innerText = `Due Date: \n${toDoInfo.dueDate}`;
+        }
         todoDueDate.id = "dueDate";
 
         const todoPriority = priority;
@@ -453,7 +459,9 @@ class ContentRender {
         todoComplete.id = "Complete";
 
         const todoNotes = notes;
-        todoNotes.innerText = toDoInfo.notes;
+        if (todoNotes.tagName === "P") {
+            todoNotes.innerText = toDoInfo.notes;
+        }
         todoNotes.id = "Notes";
 
         //add complete toggle button and instruction p
@@ -465,9 +473,15 @@ class ContentRender {
         explainer.id ="toDoExplainer";
         explainer.innerText = "Click a field to edit";
 
+        const confirmChangesButton = document.createElement('button')
+        confirmChangesButton.type = 'button';
+        confirmChangesButton.id = "confirmChangesButton";
+        confirmChangesButton.innerText = "Confirm Changes";
+
         toDoDiv.append(
             toDoTitle, todoDesc, todoDueDate, todoPriority,
-            todoNotes, todoComplete, toggleCompleteToDo, explainer
+            todoNotes, todoComplete, toggleCompleteToDo, explainer,
+            confirmChangesButton
         );
     }
 }

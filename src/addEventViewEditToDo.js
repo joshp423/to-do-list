@@ -1,3 +1,4 @@
+import { addEventDynamicToDoEditForm } from "./addEventDynamicToDoEditForm";
 import { renderContent } from "./renderContent";
 
 export function addEventViewEditToDo() {
@@ -10,8 +11,9 @@ export function addEventViewEditToDo() {
 
 
     //iterate through the different fields adding event listeners
-    const toDoDiv = document.querySelectorAll("#todos>div");
-    toDoDiv[0].children.foreach((field) => {
+    const toDoDiv = document.querySelector("#content>div");
+    const fields = toDoDiv.children
+    Array.from(fields).forEach((field) => {
         if (field.id !== "Complete" || field.id !== "toggleComplete" || field.id !== "toDoExplainer") {
             field.addEventListener('click', (event) => {
                 switch (event.target.id) {
@@ -31,7 +33,7 @@ export function addEventViewEditToDo() {
                         notes = document.createElement('input');
                 }
                 renderContent.renderToDoSingularDynamic(toDoDiv.id, title, desc, dueDate, priority, notes)
-
+                addEventDynamicToDoEditForm()
             })  
         }
     
