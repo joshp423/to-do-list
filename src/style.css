@@ -31,5 +31,9 @@ p {
     grid-template: 1fr 1fr / 1fr 1fr;
 }
 
+.sidebar>div {
+    cursor: pointer;
+}
+
 
 

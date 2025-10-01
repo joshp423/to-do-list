@@ -17,5 +17,9 @@ export function addEventProjectClick(){
             projectsSidebar.classList.add('notActive');
             projectsSidebar.classList.remove('active');
         })
+
+        project.addEventListener('mouseover', () => {
+            project.style.cursor = "pointer";
+        })
     })
 }

@@ -37,7 +37,10 @@ export function addEventViewEditToDo() {
                 renderContent.renderToDoSingularDynamic(toDoDiv.id, title, desc, dueDate, priority, notes);
                 renderTitle.renderViewEditToDoTitle(toDoDiv.id);
                 addEventDynamicToDoEditForm();
-            })  
+            })
+            field.addEventListener('mouseover', () => {
+                field.style.cursor = "pointer";
+            })
         }
     })
 

@@ -38,10 +38,15 @@ export function addEventProjectButtons(){
         })
     })
     todos.forEach((todo) => {
-        todo.addEventListener('click', () => {
-            renderContent.renderToDoSingularDefault(todo.id);
-            renderTitle.renderViewEditToDoTitle();
-            addEventViewEditToDo();
-        })
+        if (todo.innerHTML !== "No To-do's") {
+            todo.addEventListener('click', () => {
+                renderContent.renderToDoSingularDefault(todo.id);
+                renderTitle.renderViewEditToDoTitle();
+                addEventViewEditToDo();
+            })
+            todo.addEventListener('mouseover', () => {
+                todo.style.cursor = "pointer";
+            })
+        }
     })
 }
