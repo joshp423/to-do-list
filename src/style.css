@@ -9,6 +9,24 @@ p {
 ul {
     padding-left: 0;
 }
+
+h1 {
+    margin: 1%;
+    color: rgb(137, 5, 5);
+}
+
+input {
+    width: 300px;
+}
+
+select {
+    width: 200px;
+}
+
+label {
+    width: 200px;
+}
+
 .container {
     display: grid;
     grid-template-columns: 1fr 5fr;
@@ -19,15 +37,24 @@ ul {
     flex-direction: column;
     padding-top: 80px;
     gap: 5%;
-    border: 1px solid black;
+    border-top: 3px solid black;
+    border-left: 15px solid black;  
+    border-bottom: 3px solid black;
 }
 
 .sidebar>div {
     cursor: pointer;
+    margin-left: 15%;
+    align-items: flex-start;
 }
 
-.sidebar>div>a {
-    text-decoration: none;
+.sidebar>div>p {
+    font-weight: 700;
+    font-size: 18px;
+}
+
+header {
+    
 }
 
 #headerTitle {
@@ -37,11 +64,11 @@ ul {
 .contentContainer {
     display: grid;
     grid-template-rows: 1fr 8fr;
-    border: 1px solid black;
+    border: 3px solid black;
 }
 
 #content {
-    border: 1px solid black;
+    border-top: 3px solid black;
     align-items: center;
     justify-items: center;
 }
@@ -53,13 +80,29 @@ ul {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 5%;
+    border: 1px solid black;
+}
+
+#content>div>button {
+    margin-top: 1%;
+    width: 20%;
+}
+
+#content>div>p, #content>div>ul {
+    margin: 2%;
+}
+
+#content>div>form>div {
+    display: flex;
+    gap: 0;
+    
+}
+
+#content>div>form>div>input {
+    width: 100%;
 }
 
 #todos {
     display: flex;
     flex-wrap: wrap;
-}
-#todos>div {
-
 }

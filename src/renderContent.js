@@ -231,6 +231,8 @@ class ContentRender {
 
         const priorityDiv = document.createElement('div');
         priorityDiv.id = "priority";
+        const priorityLabel = document.createElement('label')
+        priorityLabel.innerText = "Priority:"
         const prioritySelect = document.createElement('select')
         const priorityInputLow = document.createElement('option');
         priorityInputLow.value = "Low";
@@ -262,7 +264,7 @@ class ContentRender {
         titleDiv.append(titleInputLabel, titleInput);
         descDiv.append(descInputLabel, descInput);
         dueDateDiv.append(dueDateInputLabel, dueDateInput);
-        priorityDiv.appendChild(prioritySelect);
+        priorityDiv.append(priorityLabel, prioritySelect);
         prioritySelect.append(priorityInputLow, priorityInputMedium, priorityInputHigh);
         notesDiv.append(notesLabel, notesInput);
     }
