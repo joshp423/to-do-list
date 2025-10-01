@@ -35,6 +35,9 @@ class ContentRender {
             //project complete
             const complete = document.createElement('p')
             complete.innerText = project.complete;
+            if (complete.innerText === "Complete") {
+                complete.style.color = "green"
+            }
 
             //project todos and adding elements before todos
             const todos = document.createElement('ul');
@@ -126,7 +129,7 @@ class ContentRender {
                 todoPriority.innerText = `Task Priority: ${todoItem.priority}`;
                 switch (todoItem.priority) {
                     case "Low":
-                        todoPriority.style.color = "yellow";
+                        todoPriority.style.color = "green";
                         break;
                     case "Medium":
                         todoPriority.style.color = "orange";
@@ -363,7 +366,7 @@ class ContentRender {
         toDoTitle.id = "Title";
 
         const todoDesc = document.createElement('p');
-        todoDesc.innerText = toDoInfo.description;
+        todoDesc.innerText = `Description: \n${toDoInfo.description}`;
         todoDesc.id = "Desc";
 
         const todoDueDate = document.createElement('p');
@@ -375,7 +378,7 @@ class ContentRender {
         todoPriority.id = "Priority";
         switch (toDoInfo.priority) {
             case "Low":
-                todoPriority.style.color = "yellow";
+                todoPriority.style.color = "green";
                 break;
             case "Medium":
                 todoPriority.style.color = "orange";
@@ -458,7 +461,7 @@ class ContentRender {
             todoPriority.innerText = `Task Priority: ${toDoInfo.priority}`;
             switch (toDoInfo.priority) {
             case "Low":
-                todoPriority.style.color = "yellow";
+                todoPriority.style.color = "green";
                 break;
             case "Medium":
                 todoPriority.style.color = "orange";

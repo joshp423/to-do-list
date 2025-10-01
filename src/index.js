@@ -6,6 +6,7 @@ import { userProjects } from "./initialArrays";
 import { renderContent } from "./renderContent";
 import { addProjectClick } from "./addProjectClick";
 import { addEventProjectClick } from "./addEventProjectClick";
+import { StyleFunctions } from "./styleFunctions";
 import './style.css';
  
 //initialise default project - will change to reading memory
@@ -49,8 +50,10 @@ sidebar.forEach((item) => {
             }
                 
             else if (item.id === "addproject") {
+                const content = document.getElementById('content')
                 renderTitle.renderAddProjectTitle()
                 renderContent.renderAddProjectsForm()
+                StyleFunctions.singleView(content)
                 addProjectClick()
             };
         }
