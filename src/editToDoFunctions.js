@@ -1,4 +1,5 @@
 import { userToDos } from "./initialArrays";
+import { todo } from "./toDoClass";
 
 export class EditToDoFunctions {
 
@@ -25,6 +26,19 @@ export class EditToDoFunctions {
                         toDo.notes = updateValue;
                         break;
                 }
+            }
+        })
+    }
+
+    static toggleComplete(selectedToDo) {
+         //loop through todos to match and update in todo array
+        userToDos.forEach((toDo) => {
+            if (toDo.id === selectedToDo) {
+                if (toDo.complete === "Not Complete") {
+                    toDo.complete = "Complete";
+                    return;
+                }
+                toDo.complete = "Not Complete";
             }
         })
     }

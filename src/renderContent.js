@@ -1,6 +1,5 @@
 import { userProjects } from "./initialArrays";
 import { userToDos } from "./initialArrays";
-import { todo } from "./toDoClass";
 
 class ContentRender {
     constructor(){
@@ -421,28 +420,35 @@ class ContentRender {
         this.contentContainer.appendChild(toDoDiv);
 
         //add title, desc, duedate, priority, notes, complete
-        const toDoTitle = title
+        const toDoTitle = title;
         if (toDoTitle.tagName === "H2") {
             toDoTitle.innerText = toDoInfo.title;
         }
         toDoTitle.id = "Title";
+        toDoDiv.append(toDoTitle);
 
         const todoDesc = desc;
         if (todoDesc.tagName === "P") {
             todoDesc.innerText = toDoInfo.description;
         }
         todoDesc.id = "Desc";
+        toDoDiv.append(todoDesc);
 
         const todoDueDate = dueDate;
+        todoDueDate.id = "dueDate";
         if (todoDueDate.tagName === "P") {
             todoDueDate.innerText = `Due Date: \n${toDoInfo.dueDate}`;
         }
-        todoDueDate.id = "dueDate";
+        else {
+            todoDueDate.type = "date"
+        }
+        toDoDiv.append(todoDueDate);
 
         const todoPriority = priority;
-        todoPriority.innerText = `Task Priority: ${toDoInfo.priority}`;
         todoPriority.id = "Priority";
-        switch (toDoInfo.priority) {
+        if (todoPriority.tagName === "P") {
+            todoPriority.innerText = `Task Priority: ${toDoInfo.priority}`;
+            switch (toDoInfo.priority) {
             case "Low":
                 todoPriority.style.color = "yellow";
                 break;
@@ -452,37 +458,58 @@ class ContentRender {
             case "High":
                 todoPriority.style.color = "red";
                 break;
+            }
+            toDoDiv.append(todoPriority);
         }
+        else {
+            const priorityInputLow = document.createElement('option');
+            priorityInputLow.value = "Low";
+            priorityInputLow.name = "priority";
+            priorityInputLow.innerText = "Low";
+            
+            const priorityInputMedium = document.createElement('option');
+            priorityInputMedium.value = "Medium";
+            priorityInputMedium.name = "priority";
+            priorityInputMedium.innerText = "Medium";
+            
+            const priorityInputHigh = document.createElement('option');
+            priorityInputHigh.value = "High";
+            priorityInputHigh.name = "priority";
+            priorityInputHigh.innerText = "High";
+            toDoDiv.append(todoPriority);
+            todoPriority.append(priorityInputHigh, priorityInputMedium, priorityInputLow);
+        }
+        toDoDiv.append(todoPriority);
 
         const todoComplete = document.createElement('p');
         todoComplete.innerText = toDoInfo.complete;
         todoComplete.id = "Complete";
+        toDoDiv.append(todoComplete);
 
         const todoNotes = notes;
         if (todoNotes.tagName === "P") {
             todoNotes.innerText = toDoInfo.notes;
         }
         todoNotes.id = "Notes";
+        toDoDiv.append(todoNotes);
 
         //add complete toggle button and instruction p
         const toggleCompleteToDo = document.createElement('button');
         toggleCompleteToDo.innerText = "Toggle Complete";
         toggleCompleteToDo.id = "toggleComplete";
+        toDoDiv.append(toggleCompleteToDo);
 
         const explainer = document.createElement('p');
         explainer.id ="toDoExplainer";
         explainer.innerText = "Click a field to edit";
+        toDoDiv.append(explainer);
 
         const confirmChangesButton = document.createElement('button')
         confirmChangesButton.type = 'button';
         confirmChangesButton.id = "confirmChangesButton";
         confirmChangesButton.innerText = "Confirm Changes";
+        toDoDiv.append(confirmChangesButton);
 
-        toDoDiv.append(
-            toDoTitle, todoDesc, todoDueDate, todoPriority,
-            todoNotes, todoComplete, toggleCompleteToDo, explainer,
-            confirmChangesButton
-        );
     }
 }
 

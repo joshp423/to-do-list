@@ -40,7 +40,7 @@ export function addEventProjectButtons(){
     todos.forEach((todo) => {
         todo.addEventListener('click', () => {
             renderContent.renderToDoSingularDefault(todo.id);
-            renderTitle.renderEditToDoTitle();
+            renderTitle.renderViewEditToDoTitle();
             addEventViewEditToDo();
         })
     })

@@ -27,8 +27,8 @@ class TitleRender {
         headerTitle.innerText = "Add New To-do";
     }
     
-    renderEditToDoTitle(){
-        headerTitle.innerText = "Edit To-do";
+    renderViewEditToDoTitle(){
+        headerTitle.innerText = "View or Edit To-do";
     }
 }
 
