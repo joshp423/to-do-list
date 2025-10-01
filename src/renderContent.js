@@ -1,5 +1,6 @@
 import { userProjects } from "./initialArrays";
 import { userToDos } from "./initialArrays";
+import { StyleFunctions } from "./styleFunctions";
 
 class ContentRender {
     constructor(){
@@ -18,6 +19,8 @@ class ContentRender {
         }
 
         this.contentContainer.innerHTML = '';
+        StyleFunctions.multiView(this.contentContainer);
+        
         this.userProjects.forEach((project) => {
 
             //project div
@@ -82,8 +85,10 @@ class ContentRender {
                 projectMatch = project.id
             }
         })
-        //clear current content
+        //clear current content and apply style changes
         this.contentContainer.innerHTML = '';
+        StyleFunctions.singleView(this.contentContainer);
+        
         //add Project Div
         const projectDiv = document.createElement('div');
         projectDiv.id = selectedProject;
@@ -160,6 +165,7 @@ class ContentRender {
         projectAddToDo.innerText = "Add To-do";
         
         projectDiv.append(projectEdit, projectComplete, projectAddToDo);
+
     }
 
     renderEditProjectForm(project) {

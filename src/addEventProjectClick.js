@@ -16,6 +16,7 @@ export function addEventProjectClick(){
             //reset project sidebar to not active so user can go back to projects view
             projectsSidebar.classList.add('notActive');
             projectsSidebar.classList.remove('active');
+            
         })
 
         project.addEventListener('mouseover', () => {
