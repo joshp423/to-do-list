@@ -1,6 +1,7 @@
 import { userToDos } from "./initialArrays";
 import { todo } from "./toDoClass";
 import { userProjects } from "./initialArrays";
+import { localStorageFunctions } from "./localStorageFunctions";
 
 export function addToDo(selectedProject){
     const titleInput = document.querySelector('#title>input');
@@ -24,5 +25,7 @@ export function addToDo(selectedProject){
         dueDateInput.value, priorityInput.value,
         notesInput.value, projectinfo
     ));
+    localStorageFunctions.clearAndPushToLS(userProjects, userToDos);
+    console.log(localStorageFunctions.retrieveFromLSUTD());
     console.log(userToDos)
 }

@@ -3,6 +3,9 @@ import { renderContent } from "./renderContent";
 import { renderTitle } from "./renderTitle";
 import { userProjects } from "./initialArrays";
 import { addEventProjectButtons } from "./addEventProjectButtons";
+import { addEventProjectClick } from "./addEventProjectClick";
+import { addProjectClick } from "./addNewProjectClick";
+import { localStorageFunctions } from "./localStorageFunctions";
 
 export function addEventsProjectEditForm(){
     let currentProject = document.querySelectorAll("#content>div")
@@ -29,12 +32,14 @@ export function addEventsProjectEditForm(){
             renderContent.renderProjectsProjectView();
             projectsSidebar.classList.remove('notActive');
             projectsSidebar.classList.add('active');
+            addEventProjectClick();
         }
         else {
             renderTitle.renderAddProjectTitle();
             renderContent.renderAddProjectsForm();
             addProjectsSidebar.classList.add('active');
             addProjectsSidebar.classList.remove('notActive');
+            addProjectClick();
         }
     })
 }

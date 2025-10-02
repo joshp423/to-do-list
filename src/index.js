@@ -1,10 +1,8 @@
-import { userToDos } from "./initialArrays";
 import { renderTitle } from "./renderTitle";
-import { Project } from "./projectClass";
 import { initialiseProject } from "./initialiseProject";
 import { userProjects } from "./initialArrays";
 import { renderContent } from "./renderContent";
-import { addProjectClick } from "./addProjectClick";
+import { addProjectClick } from "./addNewProjectClick";
 import { addEventProjectClick } from "./addEventProjectClick";
 import { StyleFunctions } from "./styleFunctions";
 import './style.css';

@@ -1,5 +1,6 @@
 import { userToDos } from "./initialArrays";
-import { todo } from "./toDoClass";
+import { userProjects } from "./initialArrays";
+import { localStorageFunctions } from "./localStorageFunctions";
 
 export class EditToDoFunctions {
 
@@ -28,6 +29,9 @@ export class EditToDoFunctions {
                 }
             }
         })
+        
+        localStorageFunctions.clearAndPushToLS(userProjects, userToDos);
+        
     }
 
     static toggleComplete(selectedToDo) {

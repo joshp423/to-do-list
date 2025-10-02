@@ -1,4 +1,6 @@
 import { userProjects } from "./initialArrays";
+import { userToDos } from "./initialArrays";
+import { localStorageFunctions } from "./localStorageFunctions";
 
 export class EditProjectFunctions {
 
@@ -13,6 +15,7 @@ export class EditProjectFunctions {
             }
             return;
         });
+        localStorageFunctions.clearAndPushToLS(userProjects, userToDos);
     };
 
     static deleteProject(selectedProject) {
@@ -24,8 +27,19 @@ export class EditProjectFunctions {
                 const position = userProjects.indexOf(project);
                 console.log(position);
                 userProjects.splice(position, 1);
+
+                //also delete associated todos from array
+                userToDos.forEach((todo) => {
+                    if (todo.project === project.id) {
+                    const position = userToDos.indexOf(todo);
+                    console.log(position);
+                    userToDos.splice(position, 1);
+                    };
+                });
             };
         });
+        
+        localStorageFunctions.clearAndPushToLS(userProjects, userToDos);
     };
     
     static toggleCompleteProject(selectedProject) {
@@ -45,5 +59,6 @@ export class EditProjectFunctions {
                 }
             }
         });
+        localStorageFunctions.clearAndPushToLS(userProjects, userToDos);
     };
 };
